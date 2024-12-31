@@ -729,7 +729,7 @@ class ThreadPool(object):
 
                 self._lock.acquire()
 
-                if self._idle_count == self._max_spare:
+                if self._idle_count >= self._max_spare:
                     break  # NB: lock still held
                 self._idle_count += 1
                 assert self._idle_count <= self._max_spare
